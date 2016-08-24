@@ -1,0 +1,16 @@
+我是按照我的编译路径添加库的，你们要自己解决库依赖问题，不复杂，应该很好解决，因为没有外部库依赖
+
+依赖信息：
+testoc->objectcore->thread_pool
+
+thread_pool_test->thread_pool
+
+注意，这是用 vs2013编译的 x64位库，需要有 vc120 x64运行库，vc120全套 x86 x64运行库在群共享里
+
+更新说明 1.2
+
+主要是改变了 IMObject 的 Responst纯虚函数 的形式和规则，添加了各个mobject object互相通信的通道
+注意，object只能主动联系自己从属的mobject，mobject则可以主动联系任何object和 mobject，object可以主动联系任何object
+
+注意，此版本及未来版本都将放弃，IObject派生类在响应函数里转换后实现 mobject对object操作 这样的模式
+这是出于移植性考虑
